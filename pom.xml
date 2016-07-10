@@ -30,4 +30,47 @@
 
   </dependencies>
 
+  <build>
+  <plugins>    
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>1.2.1</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>exec</goal>
+          </goals>
+        </execution>
+      </executions>
+      <configuration>
+        <executable>java</executable>
+        <arguments>
+          <argument>-classpath</argument>
+          <classpath>
+          </classpath>
+          <argument>com.mycompany.app.SampleController</argument>
+        </arguments>
+      </configuration>
+    </plugin>
+
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+        <archive>
+            <manifest>
+                <mainClass>com.mycompany.app.SampleController</mainClass>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>lib/</classpathPrefix>
+            </manifest>
+        </archive>
+        <classesDirectory>
+        </classesDirectory>
+    </configuration>
+    </plugin>
+
+  </plugins>
+  </build>
+
 </project>
